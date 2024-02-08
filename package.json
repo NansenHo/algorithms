@@ -1,0 +1,20 @@
+{
+  "name": "algorithm",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "keywords": [
+    "algorithm",
+    "LeetCode",
+    "interview"
+  ],
+  "author": "Nansen Ho",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.2"
+  }
+}
