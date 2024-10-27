@@ -1,0 +1,21 @@
+name: NansenHo/Algorithms - GitHub Actions
+run-name: ${{ github.actor }} running algorithm tests on ${{ github.event_name }} event 🚀
+
+on: [push, pull_request]
+
+jobs:
+  run-algorithm-practices:
+    name: Run Algorithm Practices
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Run Tests
+        run: pnpm run test
