@@ -80,6 +80,7 @@ function mergeOverlappingTimes(records: Record[]): Record[] {
 
   for (let i = 0; i < adjustedRecords.length; i++) {
     const currentRecord = adjustedRecords[i];
+
     if (result.length === 0) {
       result.push(currentRecord);
     } else {
