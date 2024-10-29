@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 
-describe("71 Simplify Path", () => {
+describe("LeetCode 71 - Easy - Simplify Path", () => {
   it.each([
     { path: "/a/c/..//./d/", expected: "/a/d" },
     { path: "/../", expected: "/" },
@@ -15,12 +15,12 @@ function simplifyPath(path: string): string {
   const splittedPath = path.split("/");
   const stack: string[] = [];
 
-  for (const p of splittedPath) {
-    if (p === "" || p === ".") {
-    } else if (p === "..") {
+  for (const path of splittedPath) {
+    if (path === "" || path === ".") {
+    } else if (path === "..") {
       stack.pop();
     } else {
-      stack.push(p);
+      stack.push(path);
     }
   }
 

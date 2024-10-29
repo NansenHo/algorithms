@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 
-describe("LeetCode 20 - Valid Parentheses", () => {
+describe("LeetCode 20 - Easy - Valid Parentheses", () => {
   it.each([
     { parentheses: "{}()", expected: true },
     { parentheses: "{})", expected: false },
@@ -9,6 +9,7 @@ describe("LeetCode 20 - Valid Parentheses", () => {
     { parentheses: "[{)}]", expected: false },
     { parentheses: "}})", expected: false },
     { parentheses: "[({(", expected: false },
+    { parentheses: "))", expected: false },
   ])("parentheses: $parentheses  => $expected", ({ parentheses, expected }) => {
     const result = isValid(parentheses);
     expect(result).toBe(expected);
@@ -18,25 +19,21 @@ describe("LeetCode 20 - Valid Parentheses", () => {
 function isValid(parentheses: string): boolean {
   if (parentheses.length % 2 !== 0) return false;
 
-  interface Map {
-    [key: string]: string;
-  }
-
   const stack: string[] = [];
-  const map: Map = {
-    "(": ")",
-    "{": "}",
-    "[": "]",
-  };
+  const bracketMap = new Map<string, string>([
+    ["(", ")"],
+    ["{", "}"],
+    ["[", "]"],
+  ]);
 
-  for (const p of parentheses) {
-    if (p in map) {
-      stack.push(p);
+  for (const char of parentheses) {
+    if (bracketMap.has(char)) {
+      stack.push(char);
     } else {
-      const key = stack.pop();
-      if (key && p !== map[key]) {
+      const lastOpenBracket = stack.pop();
+
+      if (!lastOpenBracket || char !== bracketMap.get(lastOpenBracket))
         return false;
-      }
     }
   }
 
